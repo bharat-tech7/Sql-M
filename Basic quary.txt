@@ -1,0 +1,50 @@
+show databases;
+use sakila;
+show tables;
+describe actor;
+select * from actor;
+select actor_id,first_name,ACTOR_ID from ACtor;
+select first_name,ACTOR_ID*100 from ACtor;
+select * from actor;
+-- select * feom table ; => saare column selection
+-- where clause for condition 
+select * from actor
+ where actor_id=2;
+ -- > ,< , >= ,<= ,= ,(!=,<>)not equalto
+ select * from actor
+ where actor_id<>2;
+ -- operator => between , in, and like operator 
+ -- between => renge of values 
+ select * FROM actor
+	where Actor_id between 1 and 5;
+-- in => specifically value
+select * FROM actor
+	where Actor_id in (2,5,500);
+    -- now get the actor id first name where the first is nick or ed
+    select actor_id ,first_name  from actor
+    where first_name in ('nick','ed');
+    -- like opertor => pattern dhunda
+    -- wildcard character => % => zero or more charcter 
+    -- _ => only one character 
+    select * from actor 
+		where first_name like 'e%';
+        select * from actor 
+		where first_name like 'e_';
+        select * from actor 
+		where first_name like '_a%';
+-- get those name who's first name has only 4 charcter 
+	select * from actor 
+		where first_name like '____';
+        
+-- last 3rd is I
+select * from actor
+	where last_name like '	I__';
+--  in middle there is e
+select * from actor 
+	where first_name like '_e_';
+-- get those user which have minimum 4 letters and the last third letter should be last -- jaha ee name ho 
+select * from actor 
+ where first_name like '____','_%ee%_';
+-- data jah 2 letter H and second last z
+select * from actor 
+where first_name like '%hz%';
