@@ -1,0 +1,29 @@
+-- multi row functions 
+-- aggregate function 
+-- sum , count , 
+use sakila;
+select * from payment;
+select sum(amount) from payment;
+select count(amount) from payment;
+select avg(amount), sum(amount)/count(amount) from payment;
+select sum(amount) from payment;
+select count(distinct (amount)),count(amount) from payment ;
+select count(amount) from payment 
+where amount =2.99;
+-- group by 
+select amount,count(payment_id),count(amount),sum(amount),avg(amount) from payment group by amount ;
+select * from payment ;
+select  month(payment_date),sum(amount) from payment group by month(payment_date);
+-- get the total amunt and avg by each coustmer
+select sum(amount),avg (amount) from payment;
+-- get the total amount and the maximum and minimum amount for each staff id 
+select staff_id,sum(amount),max(amount),min(amount)from payment group by staff_id;
+-- get the total number payment by each staff
+select sum(payment_id),staff_id from payment group by staff_id;
+-- get the total amount the total number of entry ,the avg amount and the amxi by each coustmor amount>$2 and payment id is >10
+select * from payment;
+--
+select amount ,sum(amount)
+from payment 
+ group by amount
+having sum(amount)>5000;
