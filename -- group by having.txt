@@ -1,0 +1,40 @@
+-- group by having 
+-- order by 
+-- alias
+select amount,amount*10 as `select`
+ from payment;
+select * from payment
+order by amount desc,rental_id desc;
+-- subquery 
+-- case statement
+-- condition?true:false
+select amount ,
+if(amount=0.99,'Correct',
+ if (amount=2.99,'yes','incorrect'))
+from payment; 
+-- select col,
+-- case 
+--     when condition then statement 
+--     when condition then statement 
+--   end 
+select * from payment ;
+select amount ,
+case 
+	when amount =0.99 then 'value is 0.99'
+    when amount =2.99 then 'yes'
+    else amount
+    end as con
+    from payment;
+select * from payment ;
+-- if the count of payment is greater 10000 print amount has the 10000
+
+-- else amount less than 10000
+-- if the amount is greater than 
+
+
+-- subquery
+-- query within a query
+select amount from payment where payment_id=5;
+select * from payment where 
+amount =(select amount 
+			from payment where payment_id=3);
