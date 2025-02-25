@@ -1,0 +1,67 @@
+conditional statement 
+use sakila;
+select first_name ,if(first_name='NICK',0,if(first_name="ED",2,"not value"))
+from actor;
+
+create database regex;
+use regex;
+create table product(pid int, pname varchar(20),price int);
+insert	into product values (10,"tv",100),(20,"mobile",200),(30,"gyser",4000),
+(40,"yash",5000);
+select * from product;
+create table orders (oid int, city varchar(20),product_id int);
+insert into orders values 
+(1991,"jaipur",10),(1992,"gao",20),(1993,"UK",10),(1994,"shimla",40)
+,(1995,"kerala",80);
+select * from product;
+select o.oid,o.city,o.product_id,p.pid,p.pname,p.price 
+from orders as o  right join product as p
+on o.product_id = p.pid;
+select* from orders;
+use sakila;
+select * from actor ;
+select * from film_actor;
+-- get the actor id , full name of a the actor, the film id ,and  last update colum through the table;
+SELECT 
+    a.actor_id, 
+CONCAT(first_name, ' ', las    t_name) AS full_name, 
+
+    f.film_id, 
+    f.last_update
+FROM 
+    actors as a
+inner JOIN 
+    films as f on a.actor_id = f.actor_id;
+-- what is the difference between set operation.
+-- self join
+-- when a table is match with it's own table
+use test1;
+create table staff(eid int , ename varchar(20), manager_id int);
+insert into staff values (10,'tushar',null),(11,'aman',13),(12,'sakshi',10),
+(13,'shubham',11),(14,'ujjwal',12);
+select * from staff;
+select emp.eid,emp.ename,emp.manager_id, mng.ename from staff as emp join staff as mng
+where emp.manager_id=mng.eid;
+select * from staff;
+-- set operator
+-- union
+use sakila;select * from actor where actor_id in (2,3)
+union 
+select first_name,actor_id,last_name,last_update from actor where actor_id in (3,5);
+-- union all 
+use sakila;select * from actor where actor_id in (2,3,4)
+union all
+select * from actor where actor_id in (3,5);
+-- except 
+use sakila;select * from actor where actor_id in (2,3,4)
+except
+select * from actor where actor_id in (3,5);
+select * from actor ;
+select * from film_actor;
+
+
+desc film_actor;
+select actor.actor_id , count(film_actor.film_id) as movies
+from actor join film_actor
+where actor.actor_id=film_actor.actor_id
+group by actor.actor_id order by movies desc;
