@@ -1,0 +1,40 @@
+-- =>> datatypes 
+    -- > interger=> 4 bytes => 32 bit
+    -- > 2**32 for size -2417 to +2417 (4 byte storage)
+create database regex2;
+use regex2;
+create table employee(eid int);
+insert	into employee values(-214748364);
+select * from employee;
+create table employee2(eid int(3));
+insert	into employee2 values(100000);
+select * from employee2;
+    create table employee4(eid int(4) zerofill);
+    insert	into employee4 values(7);
+    select * from employee4;
+    drop table employee3;
+    create table employee3(eid int unsigned);
+    insert into employee3 values (215253);
+    -- int =>4
+    -- big int =>8
+    -- tinyint =>1byte =>-128 to 127
+    -- true and false are also  in tiny int 
+create table employee20(eid tinyint);
+    insert	into employee20 values(true);
+    select * from employee20;
+    -- mediumint :3 byte  small :2byte,tiny:1 byte
+    -- int : 4 bype, bid int :8 byte
+    
+-- float and double 
+create table emp1(salary float);
+    insert	into emp1 values(15.3356354);
+    select * from emp1;
+    create table emp2(salary float(4,2));
+    insert	into emp2 values(15.5);
+    select * from emp2;
+    
+-- varchar(variable lenght charcter)
+-- char(Fix lenght charcter),its removes while space 
+create table em1(name char(4));
+    insert	into em1 values("zzqe");
+select name,length(name) from em1; 
